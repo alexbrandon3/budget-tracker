@@ -11,8 +11,8 @@
         "type": "image/png"
       }
     ],
-    "name": "Newsy app",
-    "short_name": "Newsy",
+    "name": "Budget Tracker app",
+    "short_name": "Budget Tracker",
     "orientation": "portrait",
     "display": "standalone",
     "start_url": "/",
