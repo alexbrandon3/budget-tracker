@@ -1,7 +1,10 @@
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./service-worker.js", { scope: "/" })
-    .then(() => console.log("Service Worker registered successfully."))
-    .catch(error => console.log("Service Worker registration failed:", error));
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('../service-worker.js')
+      .then((reg) => {
+        console.log('Service worker registered.', reg);
+      });
+  });
 }
 
 let transactions = [];

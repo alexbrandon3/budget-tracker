@@ -3,7 +3,7 @@ let db;
 const request = indexedDB.open("budget_tracker", 1);
 
 request.onupgradeneeded = function (e) {
-  db = e.target.result;
+  let db = e.target.result;
   db.createObjectStore("new_transaction", { autoIncrement: true });
 };
 
@@ -30,10 +30,10 @@ function uploadTransaction() {
   const transaction = db.transaction(["new_transaction"], "readwrite");
   const transactionObjectStore = transaction.objectStore("new_transaction");
   const getAll = transactionObjectStore.getAll();
-
+  console.log(getAll);
   getAll.onsuccess = function () {
     if (getAll.result.length > 0) {
-      fetch("/api/transaction", {
+      fetch("/api/transaction/bulk", {
         method: "POST",
         body: JSON.stringify(getAll.result),
         headers: {
